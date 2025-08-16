@@ -27,8 +27,8 @@ pipeline {
                 withSonarQubeEnv('MavenSonar') {
                     bat '''
                 mvn sonar:sonar ^
-                  -Dsonar.projectKey=my-java-app
-                  -Dsonar.sources=src ^
+                  -Dsonar.projectKey=my-java-app ^
+                  -Dsonar.sources=src/main/java,src/test/java ^
                   -Dsonar.java.binaries=target/classes ^
                   -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             '''
