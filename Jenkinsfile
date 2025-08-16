@@ -22,17 +22,19 @@ pipeline {
                 bat 'mvn test'
             }
         }
-       stage('Static Code analysis') {
-    steps {
-        withSonarQubeEnv('MavenSonar') {
-            bat '''
+        stage('Static Code analysis') {
+            steps {
+                withSonarQubeEnv('MavenSonar') {
+                    bat '''
                 mvn sonar:sonar ^
                   -Dsonar.projectKey=my-java-app
+                  -Dsonar.sources=src ^
+                  -Dsonar.java.binaries=target/classes ^
+                  -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             '''
+                }
+            }
         }
-    }
-}
-
         stage('Finish') {
             steps {
                 echo 'Finished'
