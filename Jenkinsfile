@@ -28,7 +28,7 @@ pipeline {
                     bat '''
                 mvn sonar:sonar ^
                   -Dsonar.projectKey=my-java-app ^
-                  -Dsonar.sources=src/main/java,src/test/java ^
+                  -Dsonar.sources=src/main/java ^
                   -Dsonar.java.binaries=target/classes ^
                   -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             '''
